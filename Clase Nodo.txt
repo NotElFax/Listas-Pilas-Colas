@@ -1,0 +1,8 @@
+package pilas;
+
+public class Nodo {
+    
+    public Object dato;
+    public Nodo siguiente;
+    
+}

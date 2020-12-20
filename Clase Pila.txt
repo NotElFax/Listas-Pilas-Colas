@@ -1,0 +1,67 @@
+package pilas;
+
+public class Pila {
+    
+    public Nodo valor_pila = null;
+    private int size;
+    private int maxsize;
+
+    public Pila(int size) {
+        setSize(size);
+        size = 0;
+    }
+    
+    public Pila()
+    {
+        size = 0;
+    }
+    
+    public void setSize(int size)
+    {
+        maxsize = size;
+    }
+    
+    public void push(int dato) throws Exception
+    {
+        Nodo nuevo_nodo = new Nodo();
+        nuevo_nodo.dato = dato;
+        nuevo_nodo.siguiente = valor_pila;
+        valor_pila = nuevo_nodo;
+        size++;
+        if(size>maxsize)
+        {
+            throw new Exception("Overflow");
+        }
+    }
+    
+    public int pop() throws Exception
+    {
+        int auxiliar = valor_pila.dato;
+        valor_pila = valor_pila.siguiente;
+        size--;
+        return auxiliar;
+    }
+    
+    public int peek()
+    {
+        return valor_pila.dato;
+    }
+    
+    public void clear()
+    {
+        this.valor_pila = null;
+        size = 0;                      
+    }
+    
+    public int countsize()
+    {
+        return this.size;
+    }
+    
+    public boolean isEmpty() {
+        return valor_pila == null;
+    }   
+    public boolean isFull() {
+        return this.size == maxsize;
+    }
+}

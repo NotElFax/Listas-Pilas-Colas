@@ -1,0 +1,62 @@
+   public Auto dato;
+public Nodo siguiente;
+
+
+    private Nodo primero;
+    private int size;
+    
+    
+    public void ListarAutos() {
+        Nodo actual = primero;
+        while(actual != null)
+        {
+            System.out.println(actual.dato);
+            actual = actual.siguiente;
+        }
+    }
+    
+    public void AgregarAuto(Auto dato) {
+        Nodo actual = new Nodo();
+        actual.dato = dato;
+
+        if (primero == null) {
+            primero = actual;
+        } else {
+            Nodo aux = primero;
+            while (aux.siguiente != null) {
+                aux = aux.siguiente;
+            }
+            aux.siguiente = actual;
+        }
+        size++;
+    }
+    
+    public void EliminarAuto(Auto dato) {
+        Nodo actual = primero;
+        Nodo anterior = primero;
+        while (actual != null) {
+            if (actual.dato == dato) {
+                if (actual == primero) {
+                    primero = primero.siguiente;
+                } else {
+                    anterior.siguiente = actual.siguiente;
+                }
+            }
+            anterior = actual;
+            actual = actual.siguiente;
+        }
+        size--;
+    }
+    
+    public void Buscar(Auto SerieMotor) {
+        Nodo actual = primero;
+        int contador = 0;
+        while(actual != null)
+        {
+            if(actual.dato == SerieMotor)
+            {
+                contador++;
+            }
+            actual = actual.siguiente;
+        }
+    }
